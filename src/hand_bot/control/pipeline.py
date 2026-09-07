@@ -42,6 +42,7 @@ class ControlPipeline:
                     if self._serial:
                         self._serial.write(payload)
                     print(f"Sent: {payload.strip()}")
+                self._tracker.draw_all(frame)
                 cv2.imshow(self._overlay.window_name, frame)
                 if cv2.waitKey(1) & 0xFF == ord(quit_key):
                     break

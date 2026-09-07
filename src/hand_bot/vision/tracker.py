@@ -46,11 +46,17 @@ class HandTracker:
 
     def process(self, frame_bgr: Any) -> Iterator[FingerAngles]:
         rgb = cv2.cvtColor(frame_bgr, cv2.COLOR_BGR2RGB)
-        results = self._hands.process(rgb)
-        if not results.multi_hand_landmarks:
+        self._last_results = self._hands.process(rgb)
+        if not self._last_results.multi_hand_landmarks:
             return iter(())
-        for hand_landmarks in results.multi_hand_landmarks:
+        for hand_landmarks in self._last_results.multi_hand_landmarks:
             yield self._extract(hand_landmarks)
+
+    def draw_all(self, frame_bgr: Any) -> None:
+        if not self._last_results or not self._last_results.multi_hand_landmarks:
+            return
+        for hand_landmarks in self._last_results.multi_hand_landmarks:
+            self.draw(frame_bgr, hand_landmarks)
 
     def draw(self, frame_bgr: Any, hand_landmarks: HandLandmarks) -> None:
         self._mp_draw.draw_landmarks(
