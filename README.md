@@ -4,11 +4,28 @@ Vision-driven robotic hand controller using MediaPipe Hands and serial communica
 
 ## Setup
 
+### Python
+
 ```bash
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
 ```
+
+### ESP32 Firmware (PlatformIO)
+
+```bash
+cd firmware
+platformio run
+platformio device monitor --baud 9600
+# or with Arduino IDE:
+# Open firmware/arduino/sketch.cpp → select "ESP32 Dev Module" → upload
+```
+
+### Documentation
+
+- [Wiring diagram](docs/wiring.md) - GPIO pinout and connections
+- [Serial protocol](docs/protocol.md) - Data format and examples
 
 ## Usage
 
@@ -27,7 +44,7 @@ python scripts/run.py
 ## Architecture
 
 ```
-camera → vision (angles) → control (smoothing, mapping) → io (serial) → arduino
+camera → vision (angles) → control (smoothing, mapping) → io (serial) → ESP32 → servos
 ```
 
 ## Configuration
