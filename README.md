@@ -1,6 +1,7 @@
 # hand-bot
 
 Vision-driven robotic hand controller using MediaPipe Hands and serial communication.
+Project developed as part of the TEKBOT EPITECH association.
 
 ## Setup
 
