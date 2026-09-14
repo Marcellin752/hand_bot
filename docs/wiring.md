@@ -6,11 +6,14 @@
 
 | Finger | GPIO |
 |---|---|
-| Thumb | 5 |
-| Index | 6 |
-| Middle | 9 |
-| Ring | 10 |
-| Pinky | 11 |
+| Thumb | 18 |
+| Index | 19 |
+| Middle | 21 |
+| Ring | 22 |
+| Pinky | 23 |
+
+> Note: GPIO 6–11 are wired to the ESP32 internal SPI flash and must not be
+> used as servo outputs.
 
 ### Connections
 

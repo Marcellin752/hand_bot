@@ -2,7 +2,7 @@
 #include <Servo.h>
 
 const int NUM_SERVOS = 5;
-const int SERVO_PINS[NUM_SERVOS] = {5, 6, 9, 10, 11};
+const int SERVO_PINS[NUM_SERVOS] = {18, 19, 21, 22, 23};
 const int MIN_ANGLE = 0;
 const int MAX_ANGLE = 180;
 

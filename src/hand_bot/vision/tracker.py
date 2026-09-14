@@ -34,6 +34,7 @@ class HandTracker:
             min_detection_confidence=settings.min_detection_confidence,
             min_tracking_confidence=settings.min_tracking_confidence,
         )
+        self._last_results: Any = None
 
     def close(self) -> None:
         self._hands.close()

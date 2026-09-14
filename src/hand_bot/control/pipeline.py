@@ -1,4 +1,3 @@
-
 import cv2
 
 from hand_bot.capture.camera import CameraCapture
@@ -41,7 +40,6 @@ class ControlPipeline:
                     payload = build_payload(mapped.as_ordered_list())
                     if self._serial:
                         self._serial.write(payload)
-                    print(f"Sent: {payload.strip()}")
                 self._tracker.draw_all(frame)
                 cv2.imshow(self._overlay.window_name, frame)
                 if cv2.waitKey(1) & 0xFF == ord(quit_key):
@@ -49,3 +47,8 @@ class ControlPipeline:
         finally:
             cv2.destroyAllWindows()
             self._capture.close()
+
+    def close(self) -> None:
+        if self._serial is not None:
+            self._serial.close()
+        self._tracker.close()
