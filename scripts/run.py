@@ -31,7 +31,7 @@ def main() -> None:
     try:
         pipeline.run()
     finally:
-        pipeline._tracker.close()  # noqa: SLF001
+        pipeline._tracker.close()
 
 
 if __name__ == "__main__":
